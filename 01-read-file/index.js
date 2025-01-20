@@ -7,6 +7,7 @@ const stream = new fs.ReadStream(absolutePath, {
   encoding: 'utf-8',
 });
 
-stream.on('data', (chunk) => {
-  console.log(chunk);
+stream.on('readable', () => {
+  let text = stream.read();
+  if (text != null) console.log(text);
 });
